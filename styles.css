@@ -1,0 +1,192 @@
+/* 공통 스타일 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+@font-face {
+    font-family: 'DOSPilgiMedium';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/DOSPilgiMedium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cafe24Nyangi-W-v1.0';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2410-1@1.0/Cafe24Nyangi-W-v1.0.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DOSGothic';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/DOSGothic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Chosunilbo_myungjo';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* 요소 크기를 패딩과 테두리를 포함한 크기로 계산 */
+}
+
+#menu img {
+    width: 120px; /* 이미지 크기 조정 */
+    height: auto; /* 비율 유지 */
+    margin: 10px 150px 10px 150px; /* 여백 설정 */
+}
+
+#menu {
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    padding: 2px;
+    z-index: 1000; /* 다른 요소 위에 보이도록 설정 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.some-container {
+    background-color: transparent; /* 상단 흰색 배경을 투명하게 설정 */
+}
+
+#menu button {
+    font-family: 'Cafe24Nyangi-W-v1.0';
+    font-size: 25px;
+    background-color: transparent;
+    color: black;
+    border: none;
+    padding: 8px;
+    margin: 10px;
+    cursor: pointer;
+    z-index: 10; /* 다른 요소 위에 보이도록 설정 */
+}
+
+#notepad {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    height: 100vh; /* 전체 화면 높이 */
+}
+
+/* 화면 너비가 425px 이하일 때 */
+@media (max-width: 425px) {
+    #notepad {
+        flex-direction: column; /* 패널을 세로로 쌓기 */
+    }
+
+    .panel {
+        flex: 1; /* 각 패널이 세로로 동일한 높이를 가질 수 있도록 설정 */
+        width: 100%; /* 가로 폭을 100%로 설정 */
+    }
+}
+
+.panel {
+    flex: 1;
+    border: 0px solid #ddd;
+    overflow: hidden;
+    display: none; /* 기본적으로 숨김 */
+}
+
+.panel {
+    flex: 1; /* flex 속성 설정 */
+    position: relative; /* 패널의 포지셔닝 설정 */
+}
+
+#brainstormingCanvas {
+    width: 10000px; /* 화면 제약 없는 배경 */
+    height: 10000px;
+    position: relative;
+    background-color: #f0f0f0;
+    overflow: scroll
+    cursor: move;
+}
+
+/* 글 쓰기 박스 */
+.note {
+    font-family: 'DOSGothic';
+    position: absolute;
+    background-color: white;
+    padding: 1px 6px 2px 5px; /* 상, 우, 하, 좌 */
+    border: 1.5px solid #333;
+    cursor: move;
+    min-width: 100px;
+    min-height: 10px;
+    white-space: pre-wrap; /* 줄 바꿈 허용 */
+}
+
+.note.selected {
+    border-color: black;
+}
+
+#concludingCanvas {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    box-sizing: border-box;
+    border-left: 1px solid green;
+    background-image: linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px), 
+                      linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px);
+    background-size:19px 19px; /* 그리드 크기 조정 */
+}
+
+.page {
+    font-family: 'Pretendard-Regular';
+    font-size: 15px;
+    line-height: 1.2;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 40px 15px 15px 20px;
+    background-color: transparent; /* 배경을 투명하게 설정 */
+    outline: none;  /* 테두리 제거 */
+    color: black;   /* 글자 색상 설정 */
+    z-index: 1;    /* 그리드 위에 놓이도록 설정 */
+    margin: 0; /* 페이지 안의 여백을 제거 */
+}
+
+.grid {
+    background-image: linear-gradient(90deg, #ddd 1px, transparent 1px), 
+                      linear-gradient(#ddd 1px, transparent 1px);
+    background-size: 40px 40px;
+    position: absolute;  /* 페이지 위에 겹치도록 설정 */
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* 페이지 아래에 있도록 설정 */
+}
+
+.locked {
+    color: transparent;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 1);
+}
+
+.hidden-text {
+    font-size: 10px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+
